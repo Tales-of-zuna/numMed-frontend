@@ -3,7 +3,7 @@
     <v-navigation-drawer :mini-variant="drawer" clipped fixed dark app>
       <v-list nav dense>
         <v-list-group
-          color="orange"
+          color="teal"
           v-for="item in items"
           :key="item.title"
           v-model="item.active"
@@ -34,32 +34,11 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title class="font-weight-bold"
         ><v-btn class="" to="/" text>
-          <v-icon color="orange darken-3">mdi-gitlab</v-icon> Xiaomi.MN</v-btn
+          <v-icon color="teal darken-3" class="mr-2">mdi-school</v-icon>Num
+          med</v-btn
         ></v-toolbar-title
       >
       <v-spacer />
-      <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            v-if="$auth.user"
-            color="grey darken-3"
-            small
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-account</v-icon> {{ $auth.user.firstname }}
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item v-for="(item, index) in profile" :key="index">
-            <v-list-item-title
-              >{{ item.title
-              }}<v-icon>{{ item.icon }}</v-icon></v-list-item-title
-            >
-          </v-list-item>
-        </v-list>
-      </v-menu>
     </v-app-bar>
     <v-main style="background-color: #f5f5f5">
       <v-container>
@@ -85,127 +64,121 @@ export default {
           action: "mdi-view-dashboard",
           active: true,
           items: [{ title: "Dashboard", link: "/" }],
-          title: "Хяналтын самбар",
+          title: "Dashboard",
         },
         {
           action: "mdi-view-list",
 
           items: [
-            { title: "List", link: "/order" },
-            { title: "Leasing" },
-            { title: "Notes" },
-            { title: "Printings" },
+            { title: "Эмийн захиалга", link: "/order" },
+            { title: "Нийлүүлэгчид" },
+            { title: "Захиалгын тайлан" },
           ],
           title: "Захиалга",
         },
         {
-          action: "mdi-cart",
+          action: "mdi-pill",
 
           items: [
-            { title: "All products", link: "/products" },
-            { title: "Product Listing" },
-            { title: "Elastic Products" },
-            { title: "Add Product" },
-            { title: "Badges" },
-            { title: "Reviews" },
-            { title: "Mass import" },
-            { title: "Price update" },
-            { title: "Variants" },
-            { title: "Stock" },
-            { title: "Category (taxon)" },
+            { title: "Эмийн жагсаалт", link: "/medicines" },
+            // { title: "Product Listing" },
+            // { title: "Elastic Products" },
+            // { title: "Add Product" },
+            // { title: "Badges" },
+            // { title: "Reviews" },
+            // { title: "Mass import" },
+            // { title: "Price update" },
+            // { title: "Variants" },
+            // { title: "Stock" },
+            // { title: "Category (taxon)" },
           ],
-          title: "Бараа",
+          title: "Эм",
         },
         {
-          action: "mdi-gift",
-          items: [{ title: "Discount" }, { title: "Gift Cards" }],
-          title: "Урамшуулал",
-        },
-        {
-          action: "mdi-truck-delivery",
+          action: "mdi-toolbox",
           items: [
-            { title: "Dashboard" },
-            { title: "Products to collect" },
-            { title: "By Vendors" },
-            { title: "Pivot" },
-            { title: "Products To Return" },
-            { title: "Delivery Report" },
-            { title: "Driver Report" },
-            { title: "Delivery Schedule" },
-            { title: "Store Locations" },
-            { title: "Map" },
+            { title: "Төхөөрөмжийн жагсаалт", link: "/tools" },
+            // { title: "Products to collect" },
+            // { title: "By Vendors" },
+            // { title: "Pivot" },
+            // { title: "Products To Return" },
+            // { title: "Delivery Report" },
+            // { title: "Driver Report" },
+            // { title: "Delivery Schedule" },
+            // { title: "Store Locations" },
+            // { title: "Map" },
           ],
-          title: "Биелэлт",
+          title: "Төхөөрөмж",
         },
-        {
-          action: "mdi-note-text-outline",
-          items: [
-            { title: "Page" },
-            { title: "News" },
-            { title: "Articles" },
-            { title: "Authors" },
-            { title: "Menu" },
-            { title: "Notifications" },
-            { title: "Look Book" },
-            { title: "Polls" },
-            { title: "File Manager" },
-          ],
-          title: "Контент",
-        },
-        {
-          action: "mdi-chart-bar",
-          items: [{ title: "Order" }, { title: "Product" }],
-          title: "Тайлан",
-        },
-        {
-          action: "mdi-account-group",
-          items: [
-            { title: "Orders" },
-            { title: "General Report" },
-            { title: "Products To Collect" },
-            { title: "Products To Return" },
-            { title: "Contracts" },
-            { title: "Store Information" },
-            { title: "E-Tickets" },
-            { title: "Coupons" },
-            { title: "Seller" },
-          ],
-          title: "Худалдаа",
-        },
-        {
-          action: "mdi-sale",
-          items: [
-            { title: "Mass SMS" },
-            { title: "Push Notifications" },
-            { title: "Email" },
-            { title: "RFM" },
-            { title: "Automation" },
-          ],
-          title: "Маркетинг",
-        },
-        {
-          action: "mdi-account",
-          items: [{ title: "Customers" }, { title: "Contact Forms" }],
-          title: "Хэрэглэгчид",
-        },
-        {
-          action: "mdi-bank",
-          items: [
-            { title: "Corporate Gateway" },
-            { title: "Буцаалтын гүйлгээ" },
-          ],
-          title: "Корпорацийн гарц",
-        },
-        {
-          action: "mdi-check-decagram",
-          items: [{ title: "Баталгаат хугацаа" }],
-          title: "Баталгаат хугацаа",
-        },
-        {
-          action: "mdi-help",
-          items: [{ title: "Шинэчлэлтүүд" }],
-          title: "Шинэчлэлтүүд",
-        },
+        // {
+        //   action: "mdi-note-text-outline",
+        //   items: [
+        //     { title: "Page" },
+        //     { title: "News" },
+        //     { title: "Articles" },
+        //     { title: "Authors" },
+        //     { title: "Menu" },
+        //     { title: "Notifications" },
+        //     { title: "Look Book" },
+        //     { title: "Polls" },
+        //     { title: "File Manager" },
+        //   ],
+        //   title: "Контент",
+        // },
+        // {
+        //   action: "mdi-chart-bar",
+        //   items: [{ title: "Order" }, { title: "Product" }],
+        //   title: "Тайлан",
+        // },
+        // {
+        //   action: "mdi-account-group",
+        //   items: [
+        //     { title: "Orders" },
+        //     { title: "General Report" },
+        //     { title: "Products To Collect" },
+        //     { title: "Products To Return" },
+        //     { title: "Contracts" },
+        //     { title: "Store Information" },
+        //     { title: "E-Tickets" },
+        //     { title: "Coupons" },
+        //     { title: "Seller" },
+        //   ],
+        //   title: "Худалдаа",
+        // },
+        // {
+        //   action: "mdi-sale",
+        //   items: [
+        //     { title: "Mass SMS" },
+        //     { title: "Push Notifications" },
+        //     { title: "Email" },
+        //     { title: "RFM" },
+        //     { title: "Automation" },
+        //   ],
+        //   title: "Маркетинг",
+        // },
+        // {
+        //   action: "mdi-account",
+        //   items: [{ title: "Customers" }, { title: "Contact Forms" }],
+        //   title: "Хэрэглэгчид",
+        // },
+        // {
+        //   action: "mdi-bank",
+        //   items: [
+        //     { title: "Corporate Gateway" },
+        //     { title: "Буцаалтын гүйлгээ" },
+        //   ],
+        //   title: "Корпорацийн гарц",
+        // },
+        // {
+        //   action: "mdi-check-decagram",
+        //   items: [{ title: "Баталгаат хугацаа" }],
+        //   title: "Баталгаат хугацаа",
+        // },
+        // {
+        //   action: "mdi-help",
+        //   items: [{ title: "Шинэчлэлтүүд" }],
+        //   title: "Шинэчлэлтүүд",
+        // },
       ],
     };
   },

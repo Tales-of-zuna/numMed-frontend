@@ -18,12 +18,12 @@
           </template> </v-snackbar
         ><v-card>
           <v-card-title primary-title class="d-flex justify-space-between">
-            Бүтээгдэхүүний жагсаалт
+            Төхөөрөмжийн жагсаалт
             <div class="d-flex">
               <v-dialog v-model="addProduct" width="1000">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn color="green " dark small v-bind="attrs" v-on="on"
-                    >Бүтээгдэхүүн үүсгэх <v-icon small>mdi-plus</v-icon></v-btn
+                    >Төхөөрөмж нэмэх<v-icon small>mdi-plus</v-icon></v-btn
                   >
                 </template>
                 <v-card>
@@ -31,14 +31,11 @@
                     primary-title
                     class="d-flex justify-space-between"
                   >
-                    Бараа нэмэх
+                    Төхөөрөмж нэмэх
                     <v-btn @click="addProduct = false" icon
                       ><v-icon>mdi-close</v-icon>
                     </v-btn>
                   </v-card-title>
-                  <v-card-subtitle
-                    >Барааны загваруудыг тусд нь оруулна</v-card-subtitle
-                  >
 
                   <v-card-text>
                     <v-row
@@ -49,19 +46,19 @@
                           label="Нэр"
                           id="id"
                           dense
-                          color="orange darken-3"
+                          color="teal darken-3"
                           outlined
-                          hint="Барааны дэлгэрэнгүй нэр"
+                          hint="Ж: Электрофорез"
                         ></v-text-field></v-col
                       ><v-col cols="4"
                         ><v-text-field
                           name="name"
-                          v-model="product.category"
-                          label="Англи нэр"
-                          color="orange darken-3"
+                          v-model="product.serial"
+                          label="Серийн дугаар"
+                          color="teal darken-3"
                           id="id"
                           dense
-                          hint="xiaomi note13"
+                          hint="ABC123"
                           outlined
                         ></v-text-field></v-col
                       ><v-col cols="4"
@@ -69,30 +66,19 @@
                           name="name"
                           v-model="product.category"
                           label="Ангилал"
-                          color="orange darken-3"
+                          color="teal darken-3"
                           id="id"
                           dense
-                          hint="Product category"
+                          hint="Ж: Шарлагын төхөөрөмж"
                           outlined
                         ></v-text-field></v-col></v-row
                     ><v-row class="mt-n6"
-                      ><v-col cols="6"
-                        ><v-text-field
-                          v-model="product.color"
-                          name="name"
-                          label="Төрөл"
-                          id="id"
-                          dense
-                          color="orange darken-3"
-                          outlined
-                          hint="Барааны нэр монголоор"
-                        ></v-text-field></v-col
                       ><v-col cols="3"
                         ><v-text-field
                           v-model="product.price"
                           name="name"
                           label="Үнэ"
-                          color="orange darken-3"
+                          color="teal darken-3"
                           id="id"
                           dense
                           outlined
@@ -102,49 +88,43 @@
                           v-model="product.quantity"
                           name="name"
                           label="Тоо ширхэг"
-                          color="orange darken-3"
-                          id="id"
-                          dense
-                          outlined
-                        ></v-text-field
-                      ></v-col>
-                    </v-row>
-                    <v-row class="mt-n6"
-                      ><v-col cols="3"
-                        ><v-text-field
-                          v-model="product.brand"
-                          name="name"
-                          label="Бренд"
-                          color="orange darken-3"
+                          color="teal darken-3"
                           id="id"
                           dense
                           outlined
                         ></v-text-field></v-col
                       ><v-col cols="3"
-                        ><v-file-input
-                          show-size
+                        ><v-text-field
+                          v-model="product.brand"
+                          name="name"
+                          label="Бренд"
+                          color="teal darken-3"
+                          id="id"
                           dense
-                          counter
-                          multiple
-                          label="Зураг оруулах"
-                        ></v-file-input></v-col
-                      ><v-col cols="6">
+                          outlined
+                        ></v-text-field></v-col
+                      ><v-col cols="3">
                         <v-text-field
                           name="name"
                           v-model="product.images[0]"
                           label="Зурагны линк"
-                          color="orange darken-3"
-                          hint="https://examplewebsite.mn/Image.png"
+                          color="teal darken-3"
                           id="id"
                           dense
                           outlined
-                        ></v-text-field> </v-col
-                    ></v-row>
+                        ></v-text-field>
+                      </v-col>
+                    </v-row>
 
                     <v-row
                       ><v-col cols="12"
                         ><v-card elevation="0"
-                          ><p>Дэлгэрэнгүй мэдээлэл</p>
+                          ><p>
+                            Дэлгэрэнгүй мэдээлэл
+                            <span class="text--secondary"
+                              >( оруулахгүй байж болно )</span
+                            >
+                          </p>
                           <VueEditor
                             v-model="product.description"
                           /> </v-card></v-col
@@ -154,7 +134,7 @@
                   <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn color="orange" text @click="submitAdd()">
+                    <v-btn color="teal" text @click="submitAdd()">
                       Нэмэх
                     </v-btn>
                   </v-card-actions>
@@ -184,6 +164,11 @@
             :items="products"
             :search="search"
           >
+            <template v-slot:[`item.images[0].xl`]="{ item }">
+              <v-card height="50" width="50" class="ma-1">
+                <v-img :src="item.images[0].xl"></v-img>
+              </v-card>
+            </template>
             <template v-slot:[`item._id`]="{ item }">
               <v-btn
                 class="text-subtitle-2"
@@ -199,11 +184,6 @@
             </template>
             <template v-slot:[`item.createdAt`]="{ item }">
               {{ $moment(item.createdAt).format("YYYY-MM-DD HH:mm") }}
-            </template>
-            <template v-slot:[`item.images[0].xl`]="{ item }">
-              <v-card height="50" width="50" class="ma-1">
-                <v-img :src="item.images[0].xl"></v-img>
-              </v-card>
             </template>
 
             <template v-slot:no-results>
@@ -230,15 +210,15 @@ export default {
       search: "",
       headers: [
         {
-          text: "Барааны дугаар (id)",
+          text: "Төхөөрөмжийн дугаар (id)",
           align: "start",
           value: "_id",
         },
-        { text: "Зураг ", value: "images[0].xl" },
-        { text: "SKU", value: "slug" },
-        { text: "Slug", value: "slug" },
         { text: "Нэр ", value: "title" },
-        { text: "Бренд", value: "brand" },
+        { text: "Серийн дугаар ", value: "serial" },
+        { text: "Зураг ", value: "images[0].xl" },
+
+        { text: "Үйлдвэрлэгч", value: "brand" },
         { text: "Үлдэгдэл", value: "quantity" },
         { text: "Төрөл (category)", value: "category" },
         { text: "Үнэ", value: "price" },
@@ -248,7 +228,7 @@ export default {
   },
   methods: {
     selectProduct(productId) {
-      this.$router.push({ name: "products-id", params: { id: productId } });
+      this.$router.push({ name: "tools-id", params: { id: productId } });
     },
     formatPrice(value) {
       let val = (value / 1).toFixed(0).replace(".");
@@ -256,7 +236,7 @@ export default {
     },
     async submitAdd() {
       if (this.product != { images: [] }) {
-        let response = await this.$axios.post("/product/", this.product);
+        let response = await this.$axios.post("/tools/", this.product);
         if (response.status == 200) {
           this.success = true;
           this.addProduct = false;
@@ -270,13 +250,12 @@ export default {
     },
   },
   async fetch() {
-    let response = await this.$axios.get("/product/");
+    let response = await this.$axios.get("/tools/");
     if (response.status == 200) {
       this.products = response.data;
       this.loading = false;
     }
   },
-  middleware: "auth",
 };
 </script>
 

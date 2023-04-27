@@ -3,8 +3,8 @@ import colors from "vuetify/es5/util/colors";
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - sandbox-backoffice",
-    title: "Xiaomi-backoffice",
+    titleTemplate: "%s - Num-med",
+    title: "num-backoffice",
     htmlAttrs: {
       lang: "en",
     },
@@ -35,28 +35,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["@nuxtjs/axios", "vue2-editor/nuxt", "@nuxtjs/auth-next"],
-
-  auth: {
-    strategies: {
-      local: {
-        token: {
-          property: "token",
-          global: true,
-          required: true,
-          type: "Bearer",
-        },
-        endpoints: {
-          login: {
-            url: "/user/login",
-            method: "post",
-            propertyName: "token",
-          },
-          logout: { url: "/user/logout", method: "get" },
-          user: { url: "/user/set-user", method: "get", propertyName: "user" },
-        },
-      },
-    },
-  },
 
   axios: {
     baseURL: "http://localhost:5000/api/",

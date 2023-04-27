@@ -1,54 +1,158 @@
 <template>
   <v-container grid-list-xs>
-    <!-- {{ orders }} -->
     <v-row
-      ><v-col cols="4"
+      ><v-col lg="3" md="6" cols="12"
         ><v-card>
-          <v-card-title primary-title> Сайн уу, Zuna! 🎉</v-card-title>
-          <v-card-subtitle>Энэ сарын цэвэр ашиг</v-card-subtitle>
-          <v-card-text class="">
-            <p class="text-h5 font-weight-bold orange--text ma-0">$42.8k</p>
-            <p class="">78% өсөлт 🚀</p> </v-card-text
-          ><v-card-actions> </v-card-actions></v-card></v-col
-      ><v-col cols="5"
-        ><v-card class="fill-height">
-          <v-card-title primary-title> Захиалгын статистик </v-card-title>
-          <v-card-subtitle> Энэ сард нийт 48.5%-ийн өсөлт 😎 </v-card-subtitle>
-          <v-card-text
-            ><v-row
-              ><v-col cols="2"
-                ><v-card>
-                  <v-card-title primary-title class="text-subtitle-2">
-                    Нийт
-                  </v-card-title>
-                  <v-card-subtitle class="text-h5">{{
-                    orders.length
-                  }}</v-card-subtitle>
-                </v-card></v-col
-              ></v-row
-            ></v-card-text
-          >
-        </v-card></v-col
-      ><v-col cols="3"
-        ><v-card class="fill-height">
-          <v-card-title primary-title> Хүргэлт </v-card-title>
-          <v-card-subtitle> Энэ сард нийт 48.5%-ийн өсөлт 😎 </v-card-subtitle>
-          <v-card-text
-            ><v-row
-              ><v-col v-for="item in 3" :key="item" cols="4"
-                ><v-card>
-                  <v-card-title primary-title class="text-subtitle-2">
-                    TOTAL
-                  </v-card-title>
-                  <v-card-subtitle class="text-h5">{{
-                    orders.length
-                  }}</v-card-subtitle>
-                </v-card></v-col
-              ></v-row
-            ></v-card-text
-          >
-        </v-card></v-col
-      >
+          <v-card-title primary-title>Эмийн өртөг</v-card-title>
+          <v-card-subtitle
+            >Өнгөрсөн сараас
+            <span class="text--primary font-weight-bold"
+              >{{ currentMonth }}-р сар 😎</span
+            >
+            эмийн нийлүүлэлт</v-card-subtitle
+          ><v-card-actions class="d-flex justify-space-between">
+            <div class="d-flex justify-center align-center">
+              <v-btn color="success" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Эм
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn dark color="indigo" fab elevation="0" small
+                ><v-icon>mdi-toolbox</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Төхөөрөмж
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn color="yellow" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary"> hello </v-card-text>
+            </div>
+          </v-card-actions>
+        </v-card> </v-col
+      ><v-col lg="3" md="6" cols="12"
+        ><v-card>
+          <v-card-title primary-title> Бүртгэл </v-card-title>
+          <v-card-subtitle
+            >Өнгөрсөн сараас
+            <span class="text--primary font-weight-bold">48.5% илүү 😎</span>
+            эмийн нийлүүлэлт</v-card-subtitle
+          ><v-card-actions class="d-flex justify-space-between">
+            <div class="d-flex justify-center align-center">
+              <v-btn color="success" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Эм
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn dark color="indigo" fab elevation="0" small
+                ><v-icon>mdi-toolbox</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Төхөөрөмж
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn color="yellow" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary"> hello </v-card-text>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col lg="3" md="6" cols="12"
+        ><v-card>
+          <v-card-title primary-title> Бүртгэл </v-card-title>
+          <v-card-subtitle
+            >Өнгөрсөн сараас
+            <span class="text--primary font-weight-bold">48.5% илүү 😎</span>
+            эмийн нийлүүлэлт</v-card-subtitle
+          ><v-card-actions class="d-flex justify-space-between">
+            <div class="d-flex justify-center align-center">
+              <v-btn color="success" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Эм
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn dark color="indigo" fab elevation="0" small
+                ><v-icon>mdi-toolbox</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Төхөөрөмж
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn color="yellow" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary"> hello </v-card-text>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col lg="3" md="6" cols="12"
+        ><v-card>
+          <v-card-title primary-title> Бүртгэл </v-card-title>
+          <v-card-subtitle
+            >Өнгөрсөн сараас
+            <span class="text--primary font-weight-bold">48.5% илүү 😎</span>
+            эмийн нийлүүлэлт</v-card-subtitle
+          ><v-card-actions class="d-flex justify-space-between">
+            <div class="d-flex justify-center align-center">
+              <v-btn color="success" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Эм
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn dark color="indigo" fab elevation="0" small
+                ><v-icon>mdi-toolbox</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary">
+                <span class="text-h5 font-weight-bold text--primary">128</span>
+                <br />
+                Төхөөрөмж
+              </v-card-text>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <v-btn color="yellow" fab elevation="0" small
+                ><v-icon>mdi-pill</v-icon></v-btn
+              >
+              <v-card-text class="text--secondary"> hello </v-card-text>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row>
       <v-col cols="12"
         ><v-card>
           <v-card-title primary-title class="d-flex justify-space-between">
